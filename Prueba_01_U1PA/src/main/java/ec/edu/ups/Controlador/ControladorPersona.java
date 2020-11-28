@@ -1,0 +1,36 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ec.edu.ups.Controlador;
+
+import ec.edu.ups.Modelo.Persona;
+import java.util.List;
+
+/**
+ *
+ *  
+ */
+public class ControladorPersona extends Controlador<Persona> {
+
+    @Override
+    public boolean validar(Persona obj) {
+        if(obj.getCedula().length()== 10){
+            return true;
+        }
+        return false;
+    }
+    
+   public Persona iniciarSesion(String correo, String contrase) {
+        for (var usuario : (List<Persona>) findAll()) {
+            if (usuario.getCorreo().equals(correo) && usuario.getContraseña().equals(contrase)) {
+                return usuario;
+            }
+        }
+        return null; 
+   }
+
+    
+   
+}
